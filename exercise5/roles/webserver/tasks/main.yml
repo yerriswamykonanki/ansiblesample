@@ -1,0 +1,17 @@
+---
+- name: Appache installed
+  yum: name=httpd state=present
+
+- name: start Apache
+  service: name=httpd state=started enabled=yes
+
+- name: deploy configuration file
+  template: src=httpd.j2 dest=/etc/httpd/conf/httpd.conf
+  notify:
+  - Restart Apache
+
+- name: copy site files
+  template: src=index.j2 dest={{ doc_root }}/index.html
+
+- name: copy site files
+  template: src=health.j2 dest={{ doc_root }}/health.html 
