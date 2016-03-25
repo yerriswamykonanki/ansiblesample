@@ -1,0 +1,17 @@
+---
+- name: mysql installed
+  yum: name=mysql-server  state=present
+
+- name: start mysql
+  service: name=mysqld state=started enabled=yes
+
+#- name: deploy configuration file
+#  template: src=httpd.j2 dest=/etc/httpd/conf/httpd.conf
+#  notify:
+#  - restart Apaache
+
+#- name: creating ansible directory  
+#  file: path={{ doc_root }} state=directory
+
+#- name: copy site files
+#  template: src=index.j2 dest={{ doc_root }}/index.html

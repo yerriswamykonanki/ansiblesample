@@ -10,6 +10,9 @@
   notify:
   - Restart Apache
 
+- name: creating ansible directory  
+  file: path={{ doc_root }} state=directory
+
 - name: copy site files
   template: src=index.j2 dest={{ doc_root }}/index.html
 
